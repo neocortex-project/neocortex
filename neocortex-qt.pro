@@ -21,7 +21,7 @@ UI_DIR = build
 
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
-    # Mac: compile for maximum compatibility (10.5, 32-bit)
+    # Mac: compile for maximum compatibility (10.5, 32sc-bit)
     macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
     macx:QMAKE_CFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
     macx:QMAKE_LFLAGS += -mmacosx-version-min=10.5 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk
@@ -162,7 +162,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/qtipcserver.h \
     src/allocators.h \
     src/ui_interface.h \
-    src/scrypt.h \
+    src/neoscrypt.h \
     src/qt/miningpage.h \
     src/version.h \
     src/qt/rpcconsole.h
@@ -224,7 +224,8 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/notificator.cpp \
     src/qt/qtipcserver.cpp \
     src/qt/rpcconsole.cpp \
-    src/scrypt.c \
+    src/neoscrypt.c \
+    src/neoscrypt_asm.S \
     src/qt/miningpage.cpp \
     src/noui.cpp
 
