@@ -1471,6 +1471,9 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 
     if (vtx[0].GetValueOut() > GetBlockValue(pindex->nHeight, nFees))
         return false;
+        
+    if (vtx[0].GetValueOut() < COIN)
+        return false;
 
     // Update block index on disk without changing it in memory.
     // The memory index structure will be changed after the db commits.
@@ -2031,10 +2034,10 @@ bool LoadBlockIndex(bool fAllowNew)
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xfb;
+        pchMessageStart[0] = 0xab;
         pchMessageStart[1] = 0xc0;
-        pchMessageStart[2] = 0xb8;
-        pchMessageStart[3] = 0xdb;
+        pchMessageStart[2] = 0xd8;
+        pchMessageStart[3] = 0xcb;
         hashGenesisBlock = uint256("0x389583386044c7351abe0e7704856bf0f8bc052ac5638e07c39dad76995e5b15");
     }
 
@@ -2055,7 +2058,7 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
     
         // Genesis block
-        const char* pszTimestamp = "26-7-14 elitecoin had a hidden premine that everyone seemed to miss";
+        const char* pszTimestamp = "27-7-14 lots of altcoins with hidden premines after elitecoin scandal";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2426,7 +2429,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ascii, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfc, 0xd9, 0xb7, 0xdd };
+unsigned char pchMessageStart[4] = { 0x4c, 0xa9, 0xc7, 0x2d };
 
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
