@@ -27,6 +27,7 @@
  * SUCH DAMAGE.
  */
 
+#define SHA256 1
 
 #include <stdlib.h>
 #include <stdint.h>
